@@ -28,3 +28,4 @@ class milistado(models.Model):
      mesa_votacion  = fields.Char(string="MESA VOTACION")
      tipo_voto  = fields.Selection([('D','Duro'),('S','Seguro'), ('P','Posible')],string="TIPO DE VOTO")
 
+#hola probando Github
