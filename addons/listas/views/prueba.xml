@@ -1,0 +1,36 @@
+<odoo>
+    <!--
+    <record model="ir.actions.act_window" id="action_lista">
+        <field name="name">Actualizar Datos</field>
+        <field name="model">milistado.listas</field>
+        <field name="priority" eval="16" />
+        <field name="arch" type="xml">
+            <form string="Form">
+                <header></header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="cedula"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+
+    </record>
+    -->
+    
+    <record model="ir.actions.act_window" id="action_lista">
+        <field name="name">Actualizar xxxDatos</field>
+        <field name="res_model">milistado.listas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="menu_principal" name="Votantes Alcaldia"/>
+    <menuitem id="menu_principal_registro" name="Registro" parent="menu_principal" action="action_lista"/>
+    
+    
+    <!-- <menuitem id="menu_principal" name="Votantes Alcaldia" action="action_lista"/>
+     <menuitem id="menu_principal_registro" name="Registro" parent="menu_principal" action="action_lista"/> -->
+    
+</odoo>

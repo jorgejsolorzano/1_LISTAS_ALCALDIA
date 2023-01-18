@@ -1,0 +1,27 @@
+<odoo>
+    <record model="ir.actions.act_window" id="action_lista">
+        <field name="name">Actualizar Datos</field>
+        <field name="res_model">milistado.listas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_registraduria">
+        <field name="name">Listado Registraduria</field>
+        <field name="res_model">registraduria.listas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    
+
+    <menuitem id="menu_principal" name="Votantes Alcaldia"/>
+    <menuitem id="menu_principal_registro" name="Registro" parent="menu_principal"/>
+    <menuitem id="menu_principal_registro_listas" name="Registro_Votantes" parent="menu_principal_registro" action="action_lista"/>
+    <menuitem id="menu_principal_registro_registraduria" name="Datos Registraduria" parent="menu_principal_registro" action="action_registraduria"/>
+
+    <!--
+    <menuitem id="menu_principal" name="Votantes Alcaldia"/>
+    <menuitem id="menu_principal_registro_lista" name="Registro" parent="menu_principal" action="action_lista"/>
+    <menuitem id="menu_principal_registro_registraduria" name="DatosRegistraduria" parent="menu_principal_registro" action="action_registraduria"/>
+    -->
+</odoo>
