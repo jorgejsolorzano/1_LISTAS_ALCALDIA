@@ -1,21 +1,65 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="listas.list">
       <field name="name">listas list</field>
-      <field name="model">listas.listas</field>
+      <field name="model">milistado.listas</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
+          <field name="cedula"/>
+          <field name="nombres"/>
+          <field name="apellidos"/>
+          <field name="sexo"/>
         </tree>
       </field>
     </record>
--->
 
-    <!-- actions opening views on models -->
+
+    <record model="ir.ui.view" id="listas.listado">
+      <field name="name">listas list</field>
+      <field name="model">milistado.listas</field>
+      <field name="arch" type="xml">  
+        <form string="DATOS ELECTORES">
+          <sheet>
+            <group col="4">
+              
+              <group col="2" colspan="2" string="DATOS PERSONALES">
+                <field name="cedula" modifiers="{&quot;required&quot;: true}"/>
+                <field name="nombres" widget="este es el nombre"/>
+                <field name="apellidos"/>
+                <field name="sexo"/>
+                <field name="movil"/>
+                <field name="email"/>
+                <field name="oficio"/>
+              <separator/>
+              </group>
+              
+              <group col="2" colspan="2" string="UBICACION">
+                <field name="departamento"/>
+                <field name="municipio"/>
+                <field name="corregimiento"/>
+                <field name="vereda"/>
+                <field name="comuna"/>
+                <field name="zona"/>
+                <field name="barrio"/>
+                <field name="direccion"/>
+              <separator/>
+              </group>
+
+              <group col="2" colspan="2" string="DATOS REGISTRADURIA">
+                <field name="puesto_votacion"/>
+                <field name="mesa_votacion"/>
+                <field name="tipo_voto"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+
+<!-- actions opening views on models -->
 <!--
     <record model="ir.actions.act_window" id="listas.action_window">
       <field name="name">listas window</field>

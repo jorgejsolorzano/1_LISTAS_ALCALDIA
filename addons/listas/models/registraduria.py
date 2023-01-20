@@ -5,7 +5,7 @@ class Registraduria(models.Model):
     _name = 'registraduria.listas'
     _description = 'Lista de votantes en la Registraduria de Valledupar'
 
-
+    cedula = fields.Char(string="CEDULA")
     departamento = fields.Char(string="DEPARTAMENTO")
     minicipio= fields.Char(string="MUNICIPIO")
     puesto = fields.Char(string="PUESTO")
