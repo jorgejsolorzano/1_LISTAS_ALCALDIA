@@ -11,6 +11,7 @@
           <field name="nombres"/>
           <field name="apellidos"/>
           <field name="sexo"/>
+          <field name="tipo_voto"/>
         </tree>
       </field>
     </record>
@@ -23,7 +24,7 @@
         <form string="DATOS ELECTORES">
           <sheet>
             <group col="4">
-              
+
               <group col="2" colspan="2" string="DATOS PERSONALES">
                 <field name="cedula" modifiers="{&quot;required&quot;: true}"/>
                 <field name="nombres" widget="este es el nombre"/>
@@ -44,14 +45,15 @@
                 <field name="zona"/>
                 <field name="barrio"/>
                 <field name="direccion"/>
+                <field name="tipo_voto"/>
               <separator/>
               </group>
 
               <group col="2" colspan="2" string="DATOS REGISTRADURIA">
                 <field name="puesto_votacion"/>
                 <field name="mesa_votacion"/>
-                <field name="tipo_voto"/>
               </group>
+
             </group>
           </sheet>
         </form>
@@ -100,5 +102,23 @@
     <menuitem name="Server to list" id="listas" parent="listas.menu_2"
               action="listas.action_server"/>
 -->
+    
+
+    <record id="votantes_search" model="ir.ui.view">
+      <field name="name">milistado.listas.search</field>
+      <field name="model">milistado.listas</field>
+      <field name="arch" type="xml">
+        <search string="cedula">
+          <field name="cedula"/>
+          <field name="nombres"/>
+          <field name="sexo"/>
+          <field name="tipo_voto"/>
+          <field name="comuna"/>
+          <field name="municipio"/>
+          <field name="corregimiento"/>
+        </search>
+      </field>
+    </record>
+
   </data>
 </odoo>

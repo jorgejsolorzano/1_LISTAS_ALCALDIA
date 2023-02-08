@@ -1,4 +1,5 @@
 <odoo>
+    
     <record model="ir.actions.act_window" id="action_lista">
         <field name="name">Actualizar Datos</field>
         <field name="res_model">milistado.listas</field>
