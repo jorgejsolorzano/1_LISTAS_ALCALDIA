@@ -28,7 +28,6 @@
 
               <group col="2" colspan="2" string="DATOS PERSONALES">
                 <field name="id"/>
-                <field name="user_id"/>
                 <field name="cedula" modifiers="{&quot;required&quot;: true}"/>
                 <field name="nombres" widget="este es el nombre"/>
                 <field name="apellidos"/>
@@ -55,6 +54,10 @@
               <group col="2" colspan="2" string="DATOS REGISTRADURIA">
                 <field name="puesto_votacion"/>
                 <field name="mesa_votacion"/>
+              </group>
+              
+              <group col="2" colspan="2" string="USUARIO">
+                <field name="user_id"/>
               </group>
 
             </group>
