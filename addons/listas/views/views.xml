@@ -7,13 +7,13 @@
       <field name="model">milistado.listas</field>
       <field name="arch" type="xml">
         <tree>
-          <field name="user_id"/>
           <field name="id"/>
           <field name="cedula"/>
           <field name="nombres"/>
           <field name="apellidos"/>
           <field name="sexo"/>
           <field name="tipo_voto"/>
+          <field name="user_id"/>
         </tree>
       </field>
     </record>
