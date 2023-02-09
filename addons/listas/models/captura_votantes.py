@@ -6,7 +6,7 @@ class milistado(models.Model):
      _name = 'milistado.listas'
      _description = 'Creacion listado alcaldia de Valledupar'
 
-     user_id = fields.Many2one('res.users',string="USUARIO")
+     user_id = fields.Many2one('res.users',string="USUARIO", default=lambda self: self.env.user)
      cedula = fields.Char(string="CEDULA", required=True, size=10)
      nombres = fields.Char(string="NOMBRES")
      apellidos = fields.Char(string="APELLIDOS")
