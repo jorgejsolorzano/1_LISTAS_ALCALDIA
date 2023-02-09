@@ -6,11 +6,11 @@ class milistado(models.Model):
      _name = 'milistado.listas'
      _description = 'Creacion listado alcaldia de Valledupar'
 
-     
+     user_id = fields.Many2one('res.users',string="USUARIO")
      cedula = fields.Char(string="CEDULA", required=True, size=10)
      nombres = fields.Char(string="NOMBRES")
      apellidos = fields.Char(string="APELLIDOS")
-     sexo = fields.Selection([('M','Masculino'),('F','Femenino'), ('O','LGTBIQ+')], string="SEXO")
+     sexo = fields.Selection([('M','Masculino'),('F','Femenino'), ('O','Otro')], string="SEXO")
      movil = fields.Char(string="MOVIL", size=9)
      email = fields.Char(string="E-MAIL")
 

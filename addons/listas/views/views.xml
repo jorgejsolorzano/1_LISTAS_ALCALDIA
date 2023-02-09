@@ -7,6 +7,7 @@
       <field name="model">milistado.listas</field>
       <field name="arch" type="xml">
         <tree>
+          <field name="id"/>
           <field name="cedula"/>
           <field name="nombres"/>
           <field name="apellidos"/>
@@ -26,6 +27,8 @@
             <group col="4">
 
               <group col="2" colspan="2" string="DATOS PERSONALES">
+                <field name="id"/>
+                <field name="user_id"/>
                 <field name="cedula" modifiers="{&quot;required&quot;: true}"/>
                 <field name="nombres" widget="este es el nombre"/>
                 <field name="apellidos"/>
