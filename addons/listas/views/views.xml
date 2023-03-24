@@ -17,7 +17,7 @@
         </tree>
       </field>
     </record>
-
+    
 
     <record model="ir.ui.view" id="listas.listado">
       <field name="name">listas list</field>
@@ -126,6 +126,8 @@
         </search>
       </field>
     </record>
+
+    
 
   </data>
 </odoo>

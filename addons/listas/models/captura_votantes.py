@@ -3,7 +3,7 @@ from odoo import models, fields, api
 
 
 class milistado(models.Model):
-     _name = 'milistado.listas'
+     _name = 'milistado.listas' 
      _description = 'Creacion listado alcaldia de Valledupar'
 
      user_id = fields.Many2one('res.users',string="USUARIO", default=lambda self: self.env.user)

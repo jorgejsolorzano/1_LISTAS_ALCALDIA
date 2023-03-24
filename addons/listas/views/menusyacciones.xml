@@ -12,17 +12,22 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-
+    
     
 
     <menuitem id="menu_principal" name="Votantes Alcaldia"/>
     <menuitem id="menu_principal_registro" name="Registro" parent="menu_principal"/>
     <menuitem id="menu_principal_registro_listas" name="Registro_Votantes" parent="menu_principal_registro" action="action_lista"/>
     <menuitem id="menu_principal_registro_registraduria" name="Datos Registraduria" parent="menu_principal_registro" action="action_registraduria"/>
+    
+    <!--  <delete model="ir.iu.menu" id="mail.menu_root_discuss"/>  -->
+
+
 
     <!--
     <menuitem id="menu_principal" name="Votantes Alcaldia"/>
     <menuitem id="menu_principal_registro_lista" name="Registro" parent="menu_principal" action="action_lista"/>
     <menuitem id="menu_principal_registro_registraduria" name="DatosRegistraduria" parent="menu_principal_registro" action="action_registraduria"/>
     -->
+    
 </odoo>

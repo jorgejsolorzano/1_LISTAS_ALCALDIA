@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <report id="report_custon"
+            string="Reporte Personalizado"
+            model="milistado.listas"
+            report_type="qweb-pdef"
+            name="listas.reporte_de_prueba"
+        />
+
+        <template id="reporte_de_prueba">
+
+        </template>
+
+        >
+    </data>
+</odoo>
