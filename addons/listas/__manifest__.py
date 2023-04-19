@@ -29,6 +29,7 @@
         'views/templates.xml',
         #'views/prueba.xml',
         'views/menusyacciones.xml',
+        #'views/report.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

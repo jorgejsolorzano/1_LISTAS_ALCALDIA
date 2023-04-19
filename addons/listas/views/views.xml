@@ -58,7 +58,7 @@
               </group>
 
               <group col="2" colspan="2" string="USUARIO">
-                <field name="user_id" readonly="1"/>
+                <field name="user_id" readonly="0"/>
               </group>
 
             </group>
