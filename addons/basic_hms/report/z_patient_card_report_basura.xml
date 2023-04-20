@@ -3,29 +3,22 @@
 		<template id="report_patient_card_document">
 			<t t-call="web.html_container">
 				<t t-call="web.internal_layout">
-					<div style="margin-left: 10px; margin-right: 10px; margin-top: 1px; margin-bottom: 10px; font-size:16px">
-						<thead>
-							<tr>
-								<th>HISTORIA CLINICA</th>
-							</tr>
-						</thead>
-					</div>
-					<br></br>
-					<br></br>
-					
-					<div style="margin-left: 10px; margin-right: 10px; margin-top: 1px; margin-bottom: 10px; font-size:16px">
-						
+					<div class="page">
+						<br></br>
+						<br></br>
+						<br></br>
+						<br></br>
 						<div>
-							
 							<table>
 								<tbody>
 									<tr>
 										<td>
 										</td>
 										<td style="vertical-align: top;">
-											<div style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; font-size:16px">
+											<div
+												style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; font-size:16px">
 												
-												<form>
+												<form string="DATOS PERSONALES">
 													<sheet>
 														<group col="4">
 
@@ -80,18 +73,19 @@
 												
 												<!--<table class="table table-bordered">-->
 												
-												<!--<thead>
+												<thead>
 													<tr>
 														<th>HISTORIA CLINICA</th>
 													</tr>
-												</thead>-->
+												</thead>
 												
-												
-												<tbody>
+												<thead>
 													<tr>
 														<th>DIAGNOSTICO</th>
 													</tr>
-													
+												</thead>
+												
+												<tbody>
 													<tr t-foreach="o.patient_disease_ids" t-as="move">
 														<td>
 															<span t-field="move.pathology_id"/>

@@ -6,10 +6,32 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-call="web.external_layout">
                         <div class="page">
-                            <h2>Lista de embalaje existentes</h2>
-                            <p>El nombre de este objeto es: 
-                                <span t-field="o.name"/>
-                            </p>
+                            <h2 class="text-center">Lista de embalaje existentes</h2>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th>Cantidad</th>
+                                        <th>Hecho</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr t-foreach="o.move_ids_without_package" t-as="move">
+                                        <td>
+                                            <span t-field="move.product_id"/>
+                                        </td>
+                                            
+                                    </tr> 	
+                                </tbody>
+                            </table>    
+                            
+                            
+                            
+                            
+                            
+                            <!--<p>El nombre de este objeto es: 
+                                <span t-field="o.name"/>-->
+                        
                         </div>
                     </t>
                 </t>
