@@ -1,152 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<openerp>
+<odoo>
+	<data>
+<!-- <openerp> -->
 		<template id="report_patient_card_document">
 			<t t-call="web.html_container">
 				<t t-call="web.internal_layout">
-				<!-- <style>
-					.contenedor {
-						border_style: solid;
-						background-color: red;
-						width: 10%;
-						margin: 0 auto;
-					}
-				</style>
-
-				<div class="contenedor">
-					<h1>HISTORIA CLINICA OTROOOOOOOOOOOOO</h1>
-				
-				</div> -->
-
-
-
-				<!-- <head>
-					<link rel="stylesheet" type="text/css" href="estilo.css"/>
-					<th>DIAGNOSTICOxxxxxxxxxx</th>
-				</head> -->
-				
-					<!-- <div style="margin-left: 10px; margin-right: 10px; margin-top: 1px; margin-bottom: 10px; font-size:16px">
-						<thead>
-						
-							<tr>
-								<th>HISTORIA CLINICA111111111111111</th>
-							</tr>
-						</thead>
-					</div>
-					<br></br>
-					<br></br> -->
 					
-					<!-- <div style="margin-left: 10px; margin-right: 10px; margin-top: 1px; margin-bottom: 10px; font-size:16px"> -->
+					<div>
+						<h4>HISTORIA CLINICA</h4>
+					</div>
+				
+					<hr/>  <!--Esta es la linea de division-->
+					<div>
+						<th>IDENTIFICACION DEL PACIENTE</th>
+					</div>
+					<hr/>  <!--Esta es la linea de division-->
+
+					<div style=" margin-left: 10px; margin-right: 10px; margin-top: 1px; margin-bottom: 10px; font-size:16px">
+					
+						<b>
+							Patient ID:
+							<span t-field='o.name' />
+						</b>
+						<br></br>
+						<b>Name:</b>
+						<span t-field='o.patient_id.name' />
+						<br></br>
+						<b>Gender :</b>
+						<span t-field='o.sex' />
+						<br></br>
+						<b>Fecha de nacimiento:</b>
+						<span t-field='o.date_of_birth' />
+						<br></br>
+						<b>Edad:</b>
+						<span t-field='o.age' />
+						<br></br>
+						<b>Grupo sanguíneo:</b>
+						<span t-field='o.blood_type' />
+						<b>Rh:</b>
+						<span t-field='o.rh' />
+						<br></br>
+						<b>Dirección:</b>
+						<span t-raw="'%s' % o.patient_id.street if  o.patient_id.street  else ''" />
+						<br></br>
+						<span t-raw="'%s' %  o.patient_id.street2 if  o.patient_id.street2  else ''" />
+						<br></br>
+						<span t-raw="'%s' %  o.patient_id.country_id.name if o.patient_id.country_id.name  else ''" />
+						<br></br>
+						<span t-raw="'%s' %  o.patient_id.state_id.name if  o.patient_id.state_id.name  else ''" />
+						<br></br>
+					</div>
+
+					<hr/>  <!--Esta es la linea de division-->
+						<div>
+							<th>Consulta del Dia:  </th> <span t-field='o.create_date'/>
+							<br></br>
+						</div>
+
+						<div>
+							<th>Nombre del Profesional:  </th> <span t-field='o.primary_care_physician_id'/>
+							<br></br>
+						</div>
+
 						
-						<!-- <div> -->
+
+					
+
+					<hr/>  <!--Esta es la linea de division-->
+
+					<hr/>  <!--Esta es la linea de division-->
+						<div>
+							<th>INFORMACIÓN CRÍTICA DEL PACIENTE</th>
+						</div>
+					<hr/>  <!--Esta es la linea de division-->
+
+					<b></b>
+					<span t-field='o.critical_info' />
+					<br></br>
+					<br></br>
+					<br></br>	
+
+
+					<hr/>  <!--Esta es la linea de division-->
+						<div>
+							<th>DIAGNOSTICO</th>
+						</div>
+					<hr/>  <!--Esta es la linea de division-->							
 							
-							<!-- <table> -->
-								<!-- <tbody> -->
-									<!-- <tr> -->
-										
-										<!-- <td style="vertical-align: top;">
-											<div style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px; font-size:16px"> -->
-												
-												<!-- <form>
-													<sheet> -->
-														<!-- <group col="4"> -->
-
-															<!-- <group col="2" colspan="2" string="DATOS PERSONALES"> -->
-														
-			<div aria-label="Este es el encabezado de la página">
-				<h1>HISTORIA CLINICA</h1>
-			</div>
-			<hr/>  <!--Esta es la linea de division-->
-				<div>
-					<th>DATOS PESONALES</th>
-				</div>
-			<hr/>  <!--Esta es la linea de division-->
-
-			<div style=" margin-left: 10px; margin-right: 10px; margin-top: 1px; margin-bottom: 10px; font-size:16px">								
-				<b>
-					Patient ID:
-					<span t-field='o.name' />
-				</b>
-				<br></br>
-				<b>Name:</b>
-				<span t-field='o.patient_id.name' />
-				<br></br>
-				<b>Gender :</b>
-				<span t-field='o.sex' />
-				<br></br>
-				<b>Fecha de nacimiento:</b>
-				<span t-field='o.date_of_birth' />
-				<br></br>
-				<b>Edad:</b>
-				<span t-field='o.age' />
-				<br></br>
-				<b>Grupo sanguíneo:</b>
-				<span t-field='o.blood_type' />
-				<b>Rh:</b>
-				<span t-field='o.rh' />
-				<br></br>
-				<b>Dirección:</b>
-				<span t-raw="'%s' % o.patient_id.street if  o.patient_id.street  else ''" />
-				<br></br>
-				<span t-raw="'%s' %  o.patient_id.street2 if  o.patient_id.street2  else ''" />
-				<br></br>
-				<span t-raw="'%s' %  o.patient_id.country_id.name if o.patient_id.country_id.name  else ''" />
-				<br></br>
-				<span t-raw="'%s' %  o.patient_id.state_id.name if  o.patient_id.state_id.name  else ''" />
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
-			</div>
-
-
-			<hr/>  <!--Esta es la linea de division-->
-				<div>
-					<th>INFORMACIÓN CRÍTICA DEL PACIENTE</th>
-				</div>
-			<hr/>  <!--Esta es la linea de division-->
-
-			<b></b>
-			<span t-field='o.critical_info' />
-			<br></br>
-			<br></br>
-			<br></br>	
-
-
-			<hr/>  <!--Esta es la linea de division-->
-				<div>
-					<th>DIAGNOSTICO</th>
-				</div>
-			<hr/>  <!--Esta es la linea de division-->							
-						
-		
-			<div>
-				<tr t-foreach="o.patient_disease_ids" t-as="move">
-					<td>
-						<span t-field="move.pathology_id"/>
-						<span t-field="move.status"/>
+			
+					<div>
+						<tr t-foreach="o.patient_disease_ids" t-as="move">
+							<td>
+								<span t-field="move.pathology_id"/>
+								<!-- <span t-field="move.is_active"/> -->
+								<br></br>
+							</td>	
+						</tr>
 						<br></br>
-					</td>	
-				</tr>
-				<br></br>
-				<br></br>
-				<br></br>
-			</div>	
-
-			<hr/>  <!--Esta es la linea de division-->
-				<div>
-					<th>MEDICACION</th>
-				</div>
-			<hr/>  <!--Esta es la linea de division-->
-
-			<div>
-				<tr t-foreach="o.medication_ids" t-as="move">
-					<td>
-						<span t-field="move.medical_medicament_id"/>
 						<br></br>
-					</td>
-				</tr>
-			</div>	
+						<br></br>
+					</div>	
+
+					<hr/>  <!--Esta es la linea de division-->
+						<div>
+							<th>MEDICACION</th>
+						</div>
+					<hr/>  <!--Esta es la linea de division-->
+
+					<div>
+						<tr t-foreach="o.medication_ids" t-as="move">
+							<td>
+								<span t-field="move.medical_medicament_id"/>
+								<br></br>
+							</td>
+						</tr>
+					</div>	
 											
 				</t>
 			</t>
@@ -161,4 +129,11 @@
 				</t>
 			</t>
 		</template>
-</openerp>
+	</data>
+
+
+	
+
+</odoo>
+
+<!-- </openerp> -->

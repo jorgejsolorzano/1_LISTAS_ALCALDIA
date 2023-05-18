@@ -1,5 +1,13 @@
-th {
-        background-color: azure;
-        width: 80%;
-        margin: 0 auto
+table, td, th, h1 {
+        border: 1px solid #ddd;
+        text-align: left;
+}
+
+table {
+        border-collapse: collapse;
+        width: 100%;
+}
+
+th, td, h1 {
+        padding: 15px;
 }

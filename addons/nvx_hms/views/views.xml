@@ -1,0 +1,340 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+
+        <!-- nvx_hms.slot -->
+        <record model="ir.ui.view" id="nvx_hms.list_slot">
+            <field name="name">nvx_hms list slots</field>
+            <field name="model">nvx_hms.slot</field>
+            <field name="arch" type="xml">
+                <tree default_order='name asc'>
+                    <field name="name" string="Espacio"/>
+                    <field name="start" string="Horario"/>
+                    <field name="resource_id"/>
+                    <field name="company_id"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="nvx_hms_slot_action" model="ir.actions.act_window">
+            <field name="name">Appointment Slots</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nvx_hms.slot</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+
+        <!-- nvx_hms.appointment -->
+        <record id="nvx_hms_appointment_view_pivot" model="ir.ui.view">
+            <field name="name">nvx_hms.appointment.pivot</field>
+            <field name="model">nvx_hms.appointment</field>
+            <field name="arch" type="xml">
+                <pivot string="Pivot View">
+                    <field name="name" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+        <!-- nvx_hms.appointment check -->
+        <record id="nvx_hms_appointment_check_view_form" model="ir.ui.view">
+            <field name="name">nvx_hms.appointment.check.form</field>
+            <field name="model">nvx_hms.appointment.check</field>
+            <field name="arch" type="xml">
+                <form string="Appointment Check-IN">
+                    <group class="oe_title">
+                        <field name="appointment_id" options="{'no_create_edit': True}" attrs="{'readonly':1}" />
+                        <field name="resource_id" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="product_id" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="l10n_co_document_type" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="vat" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="contact_address" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="companion_name" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="companion_phone" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="guardian_name" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="guardian_phone" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="guardian_relationship" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="health_insurance" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                        <field name="insurance_type" options="{'no_create_edit': True}" attrs="{'required':1}" />
+                    </group>
+                    <footer>
+                        <button name="action_checkin" string="Aceptar" type="object" class="btn-primary" data-hotkey="q"/>
+                        <button string="Cancelar" class="btn-secondary" special="cancel" data-hotkey="z"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="nvx_hms_appointment_check_action" model="ir.actions.act_window">
+            <field name="name">Appointment Check-IN</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nvx_hms.appointment.check</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="nvx_hms_appointment_check_view_form"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- nvx_hms.appointment -->
+        <record model="ir.ui.view" id="nvx_hms.list_appointment">
+            <field name="name">nvx_hms list appointment</field>
+            <field name="model">nvx_hms.appointment</field>
+            <field name="arch" type="xml">
+                <tree default_order='start desc'>
+                    <field name="name"/>
+                    <field name="start_date"/>
+                    <field name="start"/>
+                    <field name="duration"/>
+                    <field name="resource_id"/>
+                    <field name="procedure_id"/>
+                    <field name="lead_id"/>
+                    <field name="status"/>
+                    <field name="attending_status"/>
+                    <field name="company_id"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <field name="write_date"/>
+                    <field name="product_id"/>
+                    <field name="mobile"/>
+
+
+                </tree>
+            </field>
+        </record>
+
+
+
+        <!-- nvx_hms.appointment -->
+
+        <record id="nvx_hms.calendar_appointment" model="ir.ui.view">
+            <field name="name">nvx_hms calendar appointment</field>
+            <field name="model">nvx_hms.appointment</field>
+            <field name="arch" type="xml">
+                <calendar js_class="attendee_calendar" string="Citas" date_start="start_date" date_delay="duration" event_open_popup="true" event_limit="5" color="resource_id">
+                    <field name="status"/>
+                    <field name="lead_id"/>
+                    <field name="resource_id"/>
+                    <field name="procedure_id"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="nvx_hms.kanban_appointment" model="ir.ui.view">
+            <field name="name">nvx_hms kanban appointment</field>
+            <field name="model">nvx_hms.appointment</field>
+            <field name="arch" type="xml">
+                <kanban string="Citas de Pacientes" default_group_by="resource_id">
+                    <field name="name"/>
+                    <field name="start"/>
+                    <field name="duration"/>
+                    <field name="resource_id"/>
+                    <field name="procedure_id"/>
+                    <field name="lead_id"/>
+                    <field name="status"/>
+                    <field name="company_id"/>
+                    <field name="create_uid"/>
+                    <field name="create_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_content">
+                                <div>
+                                    <strong class="o_kanban_record_title">
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                                <div>
+                                    <field name="duration"/>
+                                </div>
+                                <div class="text-muted o_kanban_record_subtitle">
+                                    <field name="procedure_id"/>
+                                </div>
+
+
+                            </div>
+
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <record id="nvx_hms.form_appointment" model="ir.ui.view">
+            <field name="name">nvx_hms form appointment</field>
+            <field name="model">nvx_hms.appointment</field>
+            <field name="arch" type="xml">
+                <form string="Citas de Pacientes">
+                    <header>
+                        <!--<button string="Chequear" type="object" name="action_checkin" confirm="Está seguro de querer chequear la(s) cita(s)?" groups="basic_hms.group_receptionist"/>
+                        The oe_highlight class gives the button a red color when it is saved.
+                        It is usually used to indicate the expected behaviour. -->
+                        <button name="%(nvx_hms.nvx_hms_appointment_check_action)d" string="Chequear" data-hotkey="c" title="Chequear" type="action" context="{'default_appointment_id': active_id}" groups="basic_hms.group_receptionist" />
+                        <button string="Prepagar" type="object" name="action_prepay" confirm="Está seguro de querer PREPAGAR la(s) cita(s)?" attrs="{'invisible': [('status', '=', 'CANCELADA')]}" />
+                        <button string="Cancelar" type="object" name="action_cancel" confirm="Está seguro de querer CANCELAR la(s) cita(s)?" attrs="{'invisible': [('status', '=', 'CANCELADA')]}" groups="basic_hms.group_receptionist"/>
+                        <!--This will create the statusbar, thanks to the widget. -->
+                        <field name="status" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_left" style="width: 500px;">
+                            <div class="oe_title" style="width: 390px;">
+                                <label class="oe_edit_only" for="name" string="Cita #"/>
+                                <h1>
+                                    <field name="name" class="oe_inline" readonly="1"/>
+                                </h1>
+                                <label for="lead_id" class="oe_edit_only"/>
+                                <field name="lead_id" attrs="{'required': 1, 'readonly': ['|', ('status','=','ASISTIDA'), ('status','=','CANCELADA')]}"/>
+
+
+                            </div>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="company_id" attrs="{'required': 1, 'readonly': ['|', ('status','=','ASISTIDA'), ('status','=','CANCELADA')]}"/>
+                                <field name="procedure_id" attrs="{'required': 1, 'readonly': ['|', ('status','=','ASISTIDA'), ('status','=','CANCELADA')]}" domain="[('status', '=', True)]" />
+                                <field name="slot_id" attrs="{ 'readonly': ['|', ('status','=','ASISTIDA'), ('status','=','CANCELADA')]}"/>
+                                <field name="duration_cmp" />
+                                <field name="duration" attrs="{'invisible': 1}"/>
+                                <field name="temp_resource_ids" attrs="{'invisible': 1}"/>
+                                <field name="product_id" />
+                            </group>
+                            <group>
+                                <field name="start_cmp" />
+                                <field name="start" attrs="{'invisible': 1}"/>
+                                <field name="resource_cmp" />
+                                <field name="resource_id" attrs="{'invisible': 1}"/>
+                                <field name="attending_status" attrs="{'readonly': 1}"/>
+                                <field name="campaign_id" attrs="{'required': 1, 'readonly': ['|', ('status','=','ASISTIDA'), ('status','=','CANCELADA')]}"/>
+                                <field name="create_uid" attrs="{'readonly': 1}"/>
+                                <field name="create_date" attrs="{'readonly': 1}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Comentarios">
+                                <group>
+                                    <field name="comments" nolabel="1" class="oe_inline"/>
+                                </group>
+                            </page>
+                            <page string="Datos Antiguos">
+                                <group>
+                                    <field name="old_data" attrs="{'readonly': 1}" nolabel="1" class="oe_inline"/>
+                                </group>
+                            </page>
+                        </notebook>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers"/>
+                            <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                        </div>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="nvx_hms.list_procedure">
+            <field name="name">nvx_hms list procedure</field>
+            <field name="model">nvx_hms.procedure</field>
+            <field name="arch" type="xml">
+                <tree default_order='id asc'>
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="resource_ids" widget="many2many_tags" />
+                    <field name="type"/>
+                    <field name="duration"/>
+                    <field name="status"/>
+                </tree>
+            </field>
+        </record>
+
+
+        <record id="nvx_hms.form_procedure" model="ir.ui.view">
+            <field name="name">nvx_hms form procedure</field>
+            <field name="model">nvx_hms.procedure</field>
+            <field name="arch" type="xml">
+                <form string="Procedimientos">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="product_id"/>
+                            <field name="type"/>
+                            <field name="duration"/>
+                            <field name="status"/>
+
+                        </group>
+                        <notebook>
+                            <page string="Recursos">
+                                <field name="resource_ids" nolabel="1" widget="many2many_tags" />
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+
+            </field>
+        </record>
+
+
+
+
+        <!-- actions opening views on models -->
+
+        <record model="ir.actions.act_window" id="nvx_hms.action_window_appointment">
+            <field name="name">Citas</field>
+            <field name="res_model">nvx_hms.appointment</field>
+            <field name="view_mode">tree,form,pivot</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="nvx_hms.action_window_procedure">
+            <field name="name">Procedimientos</field>
+            <field name="res_model">nvx_hms.procedure</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <record id="view_nvx_hms_appointment_search" model="ir.ui.view">
+            <field name="name">nvx_hms.appointment.search</field>
+            <field name="model">nvx_hms.appointment</field>
+            <field name="arch" type="xml">
+                <search string="Appointment Panel">
+                    <separator/>
+                    <field name="lead_id"/>
+                    <field name="resource_id"/>
+                    <field name="mobile" string="Teléfono"/>
+                    <field name="start" string="Fecha de la Cita"/>
+                </search>
+            </field>
+        </record>
+
+
+        <!-- server action to the one above -->
+        <!--
+    <record model="ir.actions.server" id="nvx_hms.action_server">
+      <field name="name">nvx_hms server</field>
+      <field name="model_id" ref="model_nvx_hms_nvx_hms"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+        <!-- Top menu item -->
+
+        <menuitem name="HMS" id="nvx_hms.menu_root"/>
+
+        <!-- menu categories -->
+
+        <menuitem name="Operación" id="nvx_hms.operation" parent="nvx_hms.menu_root"/>
+        <!--
+    <menuitem name="Menu 2" id="nvx_hms.menu_2" parent="nvx_hms.menu_root"/>
+    -->
+        <!-- actions -->
+
+        <menuitem name="Citas" id="nvx_hms.menu_1_list_appointments" parent="basic_hms.menu_appointment" action="nvx_hms.action_window_appointment"/>
+        <menuitem name="Procedimientos" id="nvx_hms.menu_1_list_procedimientos" parent="basic_hms.menu_appointment" action="nvx_hms.action_window_procedure"/>
+        <!--
+    <menuitem name="Server to list" id="nvx_hms" parent="nvx_hms.menu_2" action="nvx_hms.action_server"/>
+    -->
+    </data>
+</odoo>

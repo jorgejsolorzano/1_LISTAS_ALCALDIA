@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nvx_hms_slot,access_nvx_hms_slot,nvx_hms.model_nvx_hms_slot,base.group_system,1,1,1,1
+access_nvx_hms_appointment,access_nvx_hms_appointment,nvx_hms.model_nvx_hms_appointment,base.group_system,1,1,1,1
+access_nvx_hms_procedure,access_nvx_hms_procedure,nvx_hms.model_nvx_hms_procedure,base.group_system,1,1,1,1
+
